@@ -20,7 +20,7 @@ public class MyReducer extends Reducer<Text, DoubleWritable, Text, DoubleWritabl
             sum += value.get();
             count += 1;
         }
-        double avg = sum / count;
+        Double avg = sum / count;
         context.write(key, new DoubleWritable(avg));
                
     }
