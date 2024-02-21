@@ -4,6 +4,7 @@ import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 
 import org.apache.hadoop.mapreduce.Job;
@@ -27,7 +28,7 @@ public class ViewCount extends Configured implements Tool {
         job.setJarByClass(ViewCount.class);
         
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(IntWritable.class);
+        job.setOutputValueClass(DoubleWritable.class);
         
         job.setMapperClass(MyMapper.class);
         job.setReducerClass(MyReducer.class);
