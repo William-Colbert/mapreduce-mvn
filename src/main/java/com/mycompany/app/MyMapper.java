@@ -14,12 +14,12 @@ import org.apache.hadoop.mapreduce.Mapper;
  * 
  */
 
-public class MyMapper extends Mapper<LongWritable, Text, Text, DoubleWritable>{
+public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
     
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
         String[] row = value.toString().split("\t");
-        context.write(new Text(row[1] + "_" + row[2]), new DoubleWritable(Double.parseDouble(row[3])));
+        context.write(new Text(row[1] + "_" + row[2]), new IntWritable(1));
     }
     
 }

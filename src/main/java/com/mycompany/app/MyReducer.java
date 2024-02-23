@@ -10,18 +10,15 @@ import org.apache.hadoop.mapreduce.Reducer;
  *
  * @author ajay
  */
-public class MyReducer extends Reducer<Text, DoubleWritable, Text, DoubleWritable>{
+public class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
     
     @Override
-    public void reduce(Text key, Iterable<DoubleWritable> values, Context context) throws IOException, InterruptedException{
+    public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException{
         int count = 0;
-        double sum = 0;
-        for(DoubleWritable value: values){
-            sum += value.get();
-            count += 1;
+        for(IntWritable value: values){
+            count += value.get();
         }
-        Double avg = sum / count;
-        context.write(key, new DoubleWritable(avg));
+        context.write(key, new IntWritable(count));
                
     }
 }
