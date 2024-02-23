@@ -19,7 +19,7 @@ public class MyMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
         String[] row = value.toString().split("\t");
-        context.write(new Text(row[1] + "_" + row[2]), new IntWritable(1));
+        context.write(new Text(row[10]), new IntWritable(1));
     }
     
 }
