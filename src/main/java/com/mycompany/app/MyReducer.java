@@ -15,10 +15,16 @@ public class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable>{
     @Override
     public void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException{
         int count = 0;
+        int loan = 0;
+        int min = 0;
         for(IntWritable value: values){
-            count += value.get();
+            loan = value.get();
+            if(loan < min){
+                min = loan;
+            }
+            count += 1;
         }
-        context.write(key, new IntWritable(count));
+        context.write(key, new IntWritable(min));
                
     }
 }
